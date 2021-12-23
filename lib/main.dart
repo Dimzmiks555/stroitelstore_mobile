@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          textTheme: TextTheme(bodyText1: TextStyle(color: kTextColor), bodyText2: TextStyle(color: kTextColor))
-      ),
+          textTheme: TextTheme(
+              bodyText1: TextStyle(color: kTextColor),
+              bodyText2: TextStyle(color: kTextColor))),
       // home: HomeScreen(),
       initialRoute: HomeScreen.routeName,
       routes: routes,
     );
   }
 }
-

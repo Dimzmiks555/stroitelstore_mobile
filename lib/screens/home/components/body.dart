@@ -5,7 +5,7 @@ import 'package:stroitelstore/size_config.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatefulWidget {
-  const Body({ Key? key }) : super(key: key);
+  const Body({Key? key}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
@@ -16,20 +16,31 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-
         child: Column(
           children: [
-          SizedBox(height: getProportionateScreenWidth(20),),
-          HomeHeader(),
-          SizedBox(height: getProportionateScreenWidth(20),),
-          HomeBanner(),
-          SizedBox(height: getProportionateScreenWidth(20),),
-          Categories(),
-          SizedBox(height: getProportionateScreenWidth(30),),
-          HomeOffers(),
-          SizedBox(height: getProportionateScreenWidth(30),),
-          Hits(),
-          SizedBox(height: getProportionateScreenWidth(30),),
+            SizedBox(
+              height: getProportionateScreenWidth(20),
+            ),
+            HomeHeader(),
+            SizedBox(
+              height: getProportionateScreenWidth(20),
+            ),
+            HomeBanner(),
+            SizedBox(
+              height: getProportionateScreenWidth(20),
+            ),
+            Categories(),
+            SizedBox(
+              height: getProportionateScreenWidth(30),
+            ),
+            HomeOffers(),
+            SizedBox(
+              height: getProportionateScreenWidth(30),
+            ),
+            Hits(),
+            SizedBox(
+              height: getProportionateScreenWidth(30),
+            ),
           ],
         ),
       ),
@@ -46,17 +57,23 @@ class HomeOffers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: Row(
-          children: [
-            Text("Специально для Вас", style: TextStyle(
-              fontSize: getProportionateScreenWidth(24),
-              color: Colors.black
-            ),)
-
-          ],
-        ),),
-        SizedBox(height: getProportionateScreenWidth(20),),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: Row(
+            children: [
+              Text(
+                "Специально для Вас",
+                style: TextStyle(
+                    fontSize: getProportionateScreenWidth(24),
+                    color: Colors.black),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          height: getProportionateScreenWidth(20),
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -68,10 +85,12 @@ class HomeOffers extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Stack(
-                      children: [Image.asset(
-                        "assets/images/banner1.jfif",
-                        fit: BoxFit.cover,
-                      )],
+                      children: [
+                        Image.asset(
+                          "assets/images/banner1.jfif",
+                          fit: BoxFit.cover,
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -83,10 +102,12 @@ class HomeOffers extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Stack(
-                      children: [Image.asset(
-                        "assets/images/banner2.png",
-                        fit: BoxFit.cover,
-                      )],
+                      children: [
+                        Image.asset(
+                          "assets/images/banner2.png",
+                          fit: BoxFit.cover,
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -106,7 +127,9 @@ class HomeOffers extends StatelessWidget {
               //     ),
               //   ),
               // ),
-              SizedBox(width: getProportionateScreenWidth(20),)
+              SizedBox(
+                width: getProportionateScreenWidth(20),
+              )
             ],
           ),
         ),
@@ -127,9 +150,7 @@ class HomeBanner extends StatelessWidget {
       width: double.infinity,
       height: 90,
       decoration: BoxDecoration(
-        color: Color(0xFFCC3232),
-        borderRadius: BorderRadius.circular(20)
-      ),
+          color: Color(0xFFCC3232), borderRadius: BorderRadius.circular(20)),
     );
   }
 }
@@ -142,23 +163,28 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+      padding:
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
-      Container(
-        width: SizeConfig.screenWidth! * 0.8,
-        height: 50,
-        decoration: BoxDecoration(
-          color: kSecondaryColor.withOpacity(0.1),
-           borderRadius: BorderRadius.circular(10)
-              ),
-          child: TextField(decoration: InputDecoration(enabledBorder: InputBorder.none, focusedBorder: InputBorder.none, hintText: "Найти товар", prefixIcon: Icon(Icons.search), contentPadding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(20),
-            vertical: getProportionateScreenHeight(16)
-          ))),
-            )
-          ],
-        ),
+          Container(
+            width: SizeConfig.screenWidth! * 0.8,
+            height: 50,
+            decoration: BoxDecoration(
+                color: kSecondaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10)),
+            child: TextField(
+                decoration: InputDecoration(
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    hintText: "Найти товар",
+                    prefixIcon: Icon(Icons.search),
+                    contentPadding: EdgeInsets.symmetric(
+                        horizontal: getProportionateScreenWidth(20),
+                        vertical: getProportionateScreenHeight(16)))),
+          )
+        ],
+      ),
     );
   }
 }
@@ -170,7 +196,6 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     List<Map<String, dynamic>> categories = [
       {"icon": 'assets/icons/door.svg', "text": "Входные двери"},
       {"icon": 'assets/icons/drill.svg', "text": "Электро инструмент"},
@@ -179,19 +204,18 @@ class Categories extends StatelessWidget {
     ];
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+      padding:
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ...List.generate(
-            categories.length, 
-            (index) => CategoryCard(
-              text: categories[index]['text'], 
-              icon: categories[index]['icon'], 
-              press: () {}
-            )
-          )
+              categories.length,
+              (index) => CategoryCard(
+                  text: categories[index]['text'],
+                  icon: categories[index]['icon'],
+                  press: () {}))
         ],
       ),
     );
@@ -201,8 +225,8 @@ class Categories extends StatelessWidget {
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
     Key? key,
-    required this.text, 
-    required this.icon, 
+    required this.text,
+    required this.icon,
     required this.press,
   }) : super(key: key);
 
@@ -219,18 +243,24 @@ class CategoryCard extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 1,
-               child: Container(
+              child: Container(
                 padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-                decoration: BoxDecoration(color: Color(0xFFFFECEC), 
-                borderRadius: BorderRadius.circular(10)), 
+                decoration: BoxDecoration(
+                    color: Color(0xFFFFECEC),
+                    borderRadius: BorderRadius.circular(10)),
                 child: SvgPicture.asset(icon),
               ),
             ),
-            SizedBox(height: 10,),
-            Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: getProportionateScreenWidth(14)),)
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: getProportionateScreenWidth(14)),
+            )
           ],
         ),
-        
       ),
     );
   }

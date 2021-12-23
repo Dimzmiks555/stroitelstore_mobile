@@ -7,7 +7,6 @@ class Product {
   final double price;
   final bool isPopular;
 
-
   Product({
     required this.images,
     required this.colors,
@@ -15,7 +14,4 @@ class Product {
     required this.price,
     this.isPopular = false,
   });
-
 }
-
-
