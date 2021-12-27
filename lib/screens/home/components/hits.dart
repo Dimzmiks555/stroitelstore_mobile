@@ -63,7 +63,9 @@ class _HitsState extends State<Hits> {
                   _loadedPhotos.length,
                   (index) => GestureDetector(
                         onTap: () => Navigator.pushNamed(
-                            context, DetailsScreen.routeName),
+                            context, DetailsScreen.routeName,
+                            arguments: ProductDetailsArguments(
+                                product: _loadedPhotos[index])),
                         child: Column(children: [
                           Padding(
                             padding: EdgeInsets.only(
