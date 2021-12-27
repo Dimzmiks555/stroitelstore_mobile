@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:stroitelstore/constants.dart';
 import 'package:stroitelstore/models/Product.dart';
+import 'package:stroitelstore/screens/details/details_screen.dart';
 import 'package:stroitelstore/size_config.dart';
 
 class Hits extends StatefulWidget {
@@ -60,69 +61,74 @@ class _HitsState extends State<Hits> {
             children: [
               ...List.generate(
                   _loadedPhotos.length,
-                  (index) => Column(children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: getProportionateScreenWidth(20)),
-                          child: SizedBox(
-                            width: getProportionateScreenWidth(140),
-                            child: Column(
-                              children: [
-                                AspectRatio(
-                                    aspectRatio: 1.02,
-                                    child: Container(
-                                      padding: EdgeInsets.all(
-                                          getProportionateScreenWidth(10)),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Image.network(
-                                          'https://admin.stroitelstore.ru/uploads/${_loadedPhotos[index]["images"][0]["url"]}'),
-                                    )),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  _loadedPhotos[index]['title'],
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize:
-                                          getProportionateScreenWidth(14)),
-                                  maxLines: 3,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                        "${_loadedPhotos[index]['prices_and_count']['price'].toString()} ₽",
-                                        style: TextStyle(
-                                            color: kPrimaryColor,
-                                            fontSize:
-                                                getProportionateScreenWidth(24),
-                                            fontWeight: FontWeight.w600))
-                                  ],
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  kPrimaryColor)),
-                                      child: Text(
-                                        'В корзину',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
+                  (index) => GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, DetailsScreen.routeName),
+                        child: Column(children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: getProportionateScreenWidth(20)),
+                            child: SizedBox(
+                              width: getProportionateScreenWidth(140),
+                              child: Column(
+                                children: [
+                                  AspectRatio(
+                                      aspectRatio: 1.02,
+                                      child: Container(
+                                        padding: EdgeInsets.all(
+                                            getProportionateScreenWidth(10)),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Image.network(
+                                            'https://admin.stroitelstore.ru/uploads/${_loadedPhotos[index]["images"][0]["url"]}'),
                                       )),
-                                )
-                              ],
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    _loadedPhotos[index]['title'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            getProportionateScreenWidth(14)),
+                                    maxLines: 3,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                          "${_loadedPhotos[index]['prices_and_count']['price'].toString()} ₽",
+                                          style: TextStyle(
+                                              color: kPrimaryColor,
+                                              fontSize:
+                                                  getProportionateScreenWidth(
+                                                      24),
+                                              fontWeight: FontWeight.w600))
+                                    ],
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    child: TextButton(
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    kPrimaryColor)),
+                                        child: Text(
+                                          'В корзину',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ]))
+                        ]),
+                      ))
             ],
           ),
         )
