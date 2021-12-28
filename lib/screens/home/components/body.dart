@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stroitelstore/constants.dart';
 import 'package:stroitelstore/screens/home/components/hits.dart';
+import 'package:stroitelstore/screens/home/components/home_banner.dart';
 import 'package:stroitelstore/size_config.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -72,42 +73,59 @@ class HomeOffers extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: getProportionateScreenWidth(20),
+          height: getProportionateScreenWidth(10),
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
-                child: SizedBox(
-                  height: getProportionateScreenWidth(120),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          "assets/images/banner1.jfif",
-                          fit: BoxFit.cover,
-                        )
-                      ],
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20),
+                    vertical: getProportionateScreenWidth(20)),
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 12,
+                        offset: Offset(0, 5))
+                  ]),
+                  child: SizedBox(
+                    height: getProportionateScreenWidth(120),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            "assets/images/banner1.jfif",
+                            fit: BoxFit.cover,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
-                child: SizedBox(
-                  height: getProportionateScreenWidth(120),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          "assets/images/banner2.png",
-                          fit: BoxFit.cover,
-                        )
-                      ],
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(20),
+                    vertical: getProportionateScreenWidth(15)),
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey, blurRadius: 10.0)
+                  ]),
+                  child: SizedBox(
+                    height: getProportionateScreenWidth(120),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            "assets/images/banner2.png",
+                            fit: BoxFit.cover,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -128,29 +146,12 @@ class HomeOffers extends StatelessWidget {
               //   ),
               // ),
               SizedBox(
-                width: getProportionateScreenWidth(20),
+                width: getProportionateScreenWidth(10),
               )
             ],
           ),
         ),
       ],
-    );
-  }
-}
-
-class HomeBanner extends StatelessWidget {
-  const HomeBanner({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      width: double.infinity,
-      height: 90,
-      decoration: BoxDecoration(
-          color: Color(0xFFCC3232), borderRadius: BorderRadius.circular(20)),
     );
   }
 }
@@ -165,10 +166,20 @@ class HomeHeader extends StatelessWidget {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: SizeConfig.screenWidth! * 0.8,
+            width: double.infinity,
+            child: AspectRatio(
+                aspectRatio: 4,
+                child: Container(
+                    padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+                    child: SvgPicture.asset('assets/icons/LOGO.svg'))),
+          ),
+          SizedBox(height: 10),
+          Container(
+            width: SizeConfig.screenWidth! * 0.9,
             height: 50,
             decoration: BoxDecoration(
                 color: kSecondaryColor.withOpacity(0.1),
@@ -199,8 +210,8 @@ class Categories extends StatelessWidget {
     List<Map<String, dynamic>> categories = [
       {"icon": 'assets/icons/door.svg', "text": "Входные двери"},
       {"icon": 'assets/icons/drill.svg', "text": "Электро инструмент"},
-      {"icon": 'assets/icons/drill.svg', "text": "Краски"},
-      {"icon": 'assets/icons/drill.svg', "text": "Круги и диски"},
+      {"icon": 'assets/icons/paint.svg', "text": "Краски"},
+      {"icon": 'assets/icons/saw.svg', "text": "Круги и диски"},
     ];
 
     return Padding(
@@ -246,13 +257,14 @@ class CategoryCard extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(getProportionateScreenWidth(15)),
                 decoration: BoxDecoration(
-                    color: Color(0xFFFFECEC),
+                    color: Color(0xFFFFEEEE),
+                    border: Border.all(color: Colors.red, width: 2),
                     borderRadius: BorderRadius.circular(10)),
                 child: SvgPicture.asset(icon),
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 8,
             ),
             Text(
               text,

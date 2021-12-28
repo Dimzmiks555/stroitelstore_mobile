@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stroitelstore/constants.dart';
 
+enum pages { home, catalog, cart, profile }
+
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({Key? key}) : super(key: key);
 
@@ -9,8 +11,10 @@ class CustomBottomNavBar extends StatelessWidget {
     return BottomNavigationBar(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      selectedItemColor: kPrimaryColor,
+      selectedItemColor: Colors.grey[600],
       type: BottomNavigationBarType.fixed,
+      onTap: (value) => Navigator.pushNamed(
+          context, '/${pages.values[value].toString().split(".").last}'),
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: '1'),
         BottomNavigationBarItem(icon: Icon(Icons.library_books), label: '2'),
